@@ -22,11 +22,11 @@
 | · Coding                                | · 具体编码                              | 200              | 220              |
 | · Code Review                           | · 代码复审                              | 60               | 45               |
 | · Test                                  | · 测试（自我测试，修改代码，提交修改）  | 60               | 45               |
-| Reporting                               | 报告                                    | **60**           | **60**           |
+| Reporting                               | 报告                                    | **70**           | **60**           |
 | · Test Repor                            | · 测试报告                              | 40               | 30               |
 | · Size Measurement                      | · 计算工作量                            | 20               | 22               |
 | · Postmortem & Process Improvement Plan | · 事后总结， 并提出过程改进计划         | 10               | 8                |
-|                                         | · 合计                                  | **420**          | **616**          |
+|                                         | · 合计                                  | **630**          | **616**          |
 
 ## 设计思想：
 
@@ -43,11 +43,11 @@
 - 方法7：**Data multiply(Data a，Data b)**， 用于计算两个数据相乘
 - 方法8：**Data divide(Data a，Data b)**，用于计算两个数据除法运算，除数为0返回null
 - 方法9：**Data cal(Data a，Data b，char sign)**，用于判断运算符，调用对应的运算方法
-- 方法10：**ArrayList<Object> toPostfix(Exercise exercise)**， 用于将一道题目转换为后缀表达式，存放至ArrayList中并返回，使用了栈的思想
+- 方法10：**ArrayList\<Object\> toPostfix(Exercise exercise)**， 用于将一道题目转换为后缀表达式，存放至ArrayList中并返回，使用了栈的思想
 - 方法11：**boolean exerciseCal(Exercise exercise)**，计算一道题目，会首先转换后缀表达式，计算后，将答案存放至exercise中的成员变量answer中， 如果计算成功会返回true，否则返回false，计算失败有两种情况，一种是减法得到负数，一种是除法中，除数为0
 - 方法12：**boolean checkDuplication(Exercise a，Exercise b)**，检查两道题目是否重复，实现思想，是先都转换为后缀表达式，然后同步计算比较，只要有一步不同，就表示不重复
-- 方法13：**void exerciseGeneration(ArrayList<Exercise> exercises，int numLimit，int dataNum，int exerciseNum，int checkStart)**连续生成多道题目，exercises存放生成的一道道题目，numLimit指定数据不能大于此数值，dataNum指定每道题目中数据的数量（间接影响运算符的数量，作业要求了运算符数量不能大于3），exerciseNum指定了exercises中题目数量的多少，checkStart指定了此次生成的所有题目从索引值为checkStart的地方开始往后查重操作。此方法内部依据dataNum（等于2，不生成括号）是否满足生成括号的条件，随机（是否生成，生成位置）生成括号。
-- 方法14：**void writeToFile(ArrayList<Exercise> exercises)**，将题目集合写入文件。作业需求是将生成的题目写入Exercise.txt，答案写入Answer.txt中，所以内部已指定路径为程序同目录下，其中用的是性能还不错的打印流实现。
+- 方法13：**void exerciseGeneration(ArrayList\<Exercise\> exercises，int numLimit，int dataNum，int exerciseNum，int checkStart)**连续生成多道题目，exercises存放生成的一道道题目，numLimit指定数据不能大于此数值，dataNum指定每道题目中数据的数量（间接影响运算符的数量，作业要求了运算符数量不能大于3），exerciseNum指定了exercises中题目数量的多少，checkStart指定了此次生成的所有题目从索引值为checkStart的地方开始往后查重操作。此方法内部依据dataNum（等于2，不生成括号）是否满足生成括号的条件，随机（是否生成，生成位置）生成括号。
+- 方法14：**void writeToFile(ArrayList\<Exercise\> exercises)**，将题目集合写入文件。作业需求是将生成的题目写入Exercise.txt，答案写入Answer.txt中，所以内部已指定路径为程序同目录下，其中用的是性能还不错的打印流实现。
 - 方法15：**void printData(PrintStream，Data data)**，将writeToFile中打印数据的部分抽离出来成为方法
 - 方法16：**void proofread（String exerciseFilePath， String answerFilePath）**，用于校对题目文件和答案文件，实现了作业要求，即会输出correct（题号），wrong（题号）
 
